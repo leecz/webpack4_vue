@@ -14,10 +14,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const env =
-  process.env.NODE_ENV === 'testing'
-    ? require('../config/test.env')
-    : require('../config/prod.env')
+// const env = require('../config/prod.env')
+const env = config.build[process.env.env_config+'Env']
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',

@@ -37,6 +37,8 @@ module.exports = {
   },
 
   build: {
+    prodEnv: require('./prod.env'),
+    stagingEnv: require('./staging.env'),
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
