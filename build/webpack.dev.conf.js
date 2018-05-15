@@ -16,10 +16,12 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
-      usePostCSS: true
-    })
+    rules: [
+      {
+        test: /\.s?[ac]ss$/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+      }
+    ]
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
