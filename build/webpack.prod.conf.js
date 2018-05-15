@@ -7,11 +7,11 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+// const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const env =
@@ -51,7 +51,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         parallel: true,
         sourceMap: config.build.productionSourceMap
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCssAssetsPlugin({})
     ]
   },
   plugins: [
@@ -63,9 +63,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
-    })
+      filename: utils.assetsPath('css/[name].[contenthash].css'),
+      chunkFilename: utils.assetsPath('css/[id].[contenthash].css')
+    }),
     new HtmlWebpackPlugin({
       filename:
         process.env.NODE_ENV === 'testing' ? 'index.html' : config.build.index,
